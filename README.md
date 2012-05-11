@@ -5,13 +5,13 @@ Send sms through vodafone online site (works only on osx right now)
 
 ## Installation
 
-   git clone git@github.com:ga2arch/clj-vodafone-sms.git
-   cd clj-vodafone-sms
-   lein deps
-   lein uberjar
+        git clone git@github.com:ga2arch/clj-vodafone-sms.git
+        cd clj-vodafone-sms
+        lein deps
+        lein uberjar
 
 ## Usage
-   java -jar clj-vodafone-sms-1.0.0-SNAPSHOT-standalone.jar <username> <password> <phonenumber> <message>
+        java -jar clj-vodafone-sms-1.0.0-SNAPSHOT-standalone.jar <username> <password> <phonenumber> <message>
 
 ## License
 Copyright (C) 2012 Gabriele Carrettoni
