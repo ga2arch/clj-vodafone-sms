@@ -3,7 +3,7 @@ clj-vodafone-sms
 
 Send sms through vodafone online site
 
-# Build
+# Pre-Built Jar
 ## Prerequisites
 * [Tesseract](http://code.google.com/p/tesseract-ocr/wiki/ReadMe)
 
@@ -22,7 +22,7 @@ Send sms through vodafone online site
         lein deps
         lein uberjar
 
-### Usage
+# Usage
         java -jar clj-vodafone-sms-1.0.0-SNAPSHOT-standalone.jar <username> <password> <phonenumber> <message>
 
 
