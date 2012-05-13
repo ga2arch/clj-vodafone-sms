@@ -1,7 +1,7 @@
 clj-vodafone-sms
 ================
 
-Send sms through vodafone online site
+Send sms through italian vodafone online portal
 
 # Pre-Built Jar
 ## Prerequisites
