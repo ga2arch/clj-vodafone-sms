@@ -1,10 +1,11 @@
 clj-vodafone-sms
 ================
 
-Send sms through vodafone online site (works only on osx right now)
+Send sms through vodafone online site
 
 ## Installation
 
+        install tesseract
         git clone git@github.com:ga2arch/clj-vodafone-sms.git
         cd clj-vodafone-sms
         lein deps
