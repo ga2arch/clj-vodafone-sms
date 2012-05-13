@@ -3,16 +3,25 @@ clj-vodafone-sms
 
 Send sms through vodafone online site
 
-## Installation
+### Build
+        build/clj-vodafone-sms-1.0.0-SNAPSHOT-standalone.jar
 
-        install tesseract
+### From source
+
+## Prerequisites
+* [Tesseract](http://code.google.com/p/tesseract-ocr/wiki/ReadMe)
+* [Leinigen](https://github.com/technomancy/leiningen#installation)
+
+## Installation
         git clone git@github.com:ga2arch/clj-vodafone-sms.git
         cd clj-vodafone-sms
         lein deps
         lein uberjar
 
-## Usage
+### Usage
         java -jar clj-vodafone-sms-1.0.0-SNAPSHOT-standalone.jar <username> <password> <phonenumber> <message>
+
+
 
 ## License
 Copyright (C) 2012 Gabriele Carrettoni
