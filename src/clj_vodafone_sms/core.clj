@@ -54,8 +54,9 @@
       (.write out data))))
 
 (defn decode-captcha []
-  (.. Runtime (getRuntime) (exec "tesseract captcha.png captcha -psm 8"))
-  (first (split (slurp "captcha.txt") #"\n")))
+  (let [proc (.. Runtime (getRuntime) (exec "tesseract captcha.png captcha -psm 8"))]
+    (.waitFor proc)
+    (first (split (slurp "captcha.txt") #"\n"))))
 
 (defn send-form [num message code]
   (req :post send-url
