@@ -1,5 +1,6 @@
 (ns clj-vodafone-sms.core
   (:require [clj-http.client :as client])
+  (:use [clojure.string :only (split)])
   (:gen-class))
 
 (def home-url "http://www.vodafone.it/190/trilogy/jsp/home.do")
@@ -13,6 +14,7 @@
 (def cs (clj-http.cookies/cookie-store))
 
 (declare req)
+
 (defn follow-location [resp]
   (let [loc (get (:headers resp) "location" nil)]
     (if loc
@@ -48,10 +50,14 @@
 
 (defn save-captcha []
   (let [data (:body (req :get captcha-url {:as :byte-array}))]
-    (with-open [out (clojure.java.io/output-stream "/tmp/captcha.png")]
+    (with-open [out (clojure.java.io/output-stream "captcha.png")]
       (.write out data))))
 
-(defn send-sms [num message code]
+(defn decode-captcha []
+  (.. Runtime (getRuntime) (exec "tesseract captcha.png captcha -psm 8"))
+  (first (split (slurp "captcha.txt") #"\n")))
+
+(defn send-form [num message code]
   (req :post send-url
              {:form-params
               {:receiverNumber num
@@ -61,10 +67,11 @@
 (defn show-captcha []
    (.. Runtime (getRuntime) (exec "open /tmp/captcha.png")))
 
-(defn prompt [msg]
-  (print msg)
-  (flush)
-  (read-line))
+(defn send-sms [num message]
+  (try
+    (save-captcha)
+    (send-form num message (decode-captcha))
+    (catch java.net.MalformedURLException e (send-sms num message))))
 
 (defn -main [username password num & msg]
   (let [message (apply str (interpose " " msg))]
@@ -73,8 +80,6 @@
     (login username password)
     (dispatcher)
     (prepare-message num message)
-    (save-captcha)
-    (show-captcha)
-    (let [code (prompt "Code: ")]
-      (send-sms num message code)
-      (println "Sent"))))
+    (println "Sending..")
+    (send-sms num message)
+    (println "Sent")))
