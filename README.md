@@ -8,7 +8,7 @@ Send sms through italian vodafone online portal
 * [Tesseract](http://code.google.com/p/tesseract-ocr/wiki/ReadMe)
 
 ## Installation
-        download build/clj-vodafone-sms-1.0.0-SNAPSHOT-standalone.jar
+Download [jar](https://github.com/ga2arch/clj-vodafone-sms/raw/master/build/clj-vodafone-sms-1.0.0-SNAPSHOT-standalone.jar)
 
 # From source
 
