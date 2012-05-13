@@ -4,7 +4,11 @@ clj-vodafone-sms
 Send sms through vodafone online site
 
 ### Build
-        build/clj-vodafone-sms-1.0.0-SNAPSHOT-standalone.jar
+## Prerequisites
+* [Tesseract](http://code.google.com/p/tesseract-ocr/wiki/ReadMe)
+
+## Installation
+        download build/clj-vodafone-sms-1.0.0-SNAPSHOT-standalone.jar
 
 ### From source
 
